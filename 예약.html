@@ -25,9 +25,6 @@
             <div class="col-sm-6">
               <label for="Name" class="form-label">예약자 성함</label>
               <input type="text" class="form-control" id="Name" placeholder="홍길동" value="" required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
             </div>
 
 
@@ -43,16 +40,21 @@
                 <option value="">선택</option>
                 <option>삼청동 수제비</option>
                 <option>담산</option>
-                <option>.</option>
-                <option>.</option>
-                <option>.</option>
-                <option>.</option>
-                <option>.</option>
-                <option>.</option>
+                <option>비비밀</option>
+                <option>디슬로우 청담</option>
+                <option>동대문 프로젝디</option>
+                <option>연남토마 성수점</option>
+                <option>존앤진피자펍 행궁본점</option>
+                <option>미즈컨테이너 타임스퀘어점</option>
+                <option>쇼쿠지 양재점</option>
+                <option>하쿠텐라멘</option>
+                <option>갓덴스시 신사점</option>
+                <option>고구려짬뽕10101 인천선학점</option>
+                <option>정</option>
+                <option>불이아 홍대본점</option>
+                <option>차알 파미에스테이션점</option>
               </select>
             </div>
-
-
 
             <div class="col-md-6">
                 <label for="number" class="form-label">인원</label>
@@ -70,12 +72,24 @@
                   <option>10</option>
                 </select>
               </div>
+            
+            <div class="col-sm-6">
+              <label for="date" class="form-label">날짜</label>
+              <input type="date" class="form-control" id="date" min="2024-05-31" max="2025-01-01" required>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="time" class="form-label">시간</label>
+              <input type="time" class="form-control" id="time" required>
+            </div>
+
+     
 
           </div>
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit" onclick="location.href='예약2.html'">다음</button>
+          <button class="w-100 btn btn-primary btn-lg" type="button" onclick="location.href='예약완료.html'">예약하기</button>
         </form>
       </div>
     </div>
