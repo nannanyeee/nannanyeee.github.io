@@ -50,7 +50,7 @@
 <script>
     let options = {
         enableHighAccuracy: false,
-        timeout: 5000, // 타임아웃을 5000ms로 변경
+        timeout: 5000, 
         maximumAge: 0
     };
     let c = 0;
@@ -65,14 +65,13 @@
     function changed(position) {
         if (c == 5) {
             navigator.geolocation.clearWatch(watchID);
-            document.getElementById("msg").innerHTML += "위치 서비스 종료<br>"; // 종료 메시지를 누적
+            document.getElementById("msg").innerHTML += "위치 서비스 종료<br>";
             return;
         }
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
         let text = c + ": (위도 " + lat + "도, 경도 " + lon + "도)로 변경됨<br>";
-        document.getElementById("msg").innerHTML += text; // 메시지를 누적
-
+        document.getElementById("msg").innerHTML += text; 
         let map = document.getElementById("map");
         map.src = "https://www.openstreetmap.org/export/embed.html?bbox=" + (parseFloat(lon) - 0.01) + "%2C" + (parseFloat(lat) - 0.01) + "%2C" + (parseFloat(lon) + 0.01) + "%2C" + (parseFloat(lat) + 0.01);
         c++;
@@ -80,7 +79,6 @@
 
     function errorCallback(error) {
         console.error("Error occurred. Error code: " + error.code);
-        // 에러 처리 추가 (선택 사항)
     }
 </script>
 <br>
