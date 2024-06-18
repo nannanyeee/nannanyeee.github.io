@@ -41,8 +41,45 @@
       }
 
     </style>
+    <script>
+      function Getcookie(name){
+          let pairs = document.cookie.split(";");
+          for (let i=0; i<pairs.length; i++){
+              let pair =pairs[i].trim();
+              let unit =pair.split("=");
+              if (unit[0]==name)
+              return unescape(unit[1]);
+          }
+          return null;
+      }
+      function Setcookie(name, value, expireDate){
+          let cookieStr = name + "=" + escape(value)+((expireDate==null)?"":("; expires="+expireDate.toUTCString()));
+          document.cookie=cookieStr;
+      }
+    
+      
+    </script>
   </head>
   <body>
+    <script>
+      let username=Getcookie("username");
+      let count =Getcookie("count");
+      let expire =new Date();
+      if (username==null){
+          count=0;
+          username=prompt("이름을 입력해 주십시오.","");
+          if (username==null){
+              alert("이름을 입력하시면 보다 나은 서비스를 제공받을 수 있습니다.");
+              username="아무개";
+          } else {
+              expire.setTime(expire.getTime()+(3600*1000));
+              Setcookie("username",username,expire);
+          }
+      }
+      count++;
+      expire.setTime(expire.getTime()+(3600*1000));
+      Setcookie("count",count,expire);
+  </script>
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="bootstrap" viewBox="0 0 118 94">
     <title>Bootstrap</title>
@@ -71,61 +108,26 @@
 </main>
 <div class="b-example-divider"></div>
 
-  <main class="d-flex flex-nowrap">
-    <h1 class="visually-hidden">Sidebars</h1>
-  
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <span class="fs-4">Sidebar</span>
-      </a>
-      <hr>
-      <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-          <a href="#" class="nav-link active" aria-current="page">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link text-white">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-            Dashboard
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link text-white">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-            Orders
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link text-white">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-            Products
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link text-white">
-            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-            Customers
-          </a>
-        </li>
-      </ul>
-      <hr>
-      <div class="dropdown">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-          <strong>mdo</strong>
+<div class="b-example-divider"></div>
+
+<main class="d-flex flex-nowrap">
+  <h1 class="visually-hidden">Sidebars</h1>
+
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <span class="fs-4">Sidebar</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="로그인.html" class="nav-link active" aria-current="page">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+          로그인
         </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-          <li><a class="dropdown-item" href="#">New project...</a></li>
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
-      </div>
-    </div>
+      </li>
+    </ul>
+    <hr>
+  </div>
   
     <div class="b-example-divider b-example-vr"></div>
 

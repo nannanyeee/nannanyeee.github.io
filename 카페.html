@@ -50,8 +50,45 @@
         
      
     </style>
+    <script>
+      function Getcookie(name){
+          let pairs = document.cookie.split(";");
+          for (let i=0; i<pairs.length; i++){
+              let pair =pairs[i].trim();
+              let unit =pair.split("=");
+              if (unit[0]==name)
+              return unescape(unit[1]);
+          }
+          return null;
+      }
+      function Setcookie(name, value, expireDate){
+          let cookieStr = name + "=" + escape(value)+((expireDate==null)?"":("; expires="+expireDate.toUTCString()));
+          document.cookie=cookieStr;
+      }
+    
+      
+    </script>
   </head>
   <body>
+    <script>
+      let username=Getcookie("username");
+      let count =Getcookie("count");
+      let expire =new Date();
+      if (username==null){
+          count=0;
+          username=prompt("이름을 입력해 주십시오.","");
+          if (username==null){
+              alert("이름을 입력하시면 보다 나은 서비스를 제공받을 수 있습니다.");
+              username="아무개";
+          } else {
+              expire.setTime(expire.getTime()+(3600*1000));
+              Setcookie("username",username,expire);
+          }
+      }
+      count++;
+      expire.setTime(expire.getTime()+(3600*1000));
+      Setcookie("count",count,expire);
+  </script>
 <main>
 
   <div class="container marketing">
